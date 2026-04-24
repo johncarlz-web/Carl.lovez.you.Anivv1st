@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ffd6e8, #ffeef5);
+  text-align: center;
+  color: #444;
+}
+
+/* Smooth fade animation */
+.page {
+  display: none;
+  padding: 40px;
+  animation: fade 0.5s;
+}
+.active {
+  display: block;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+h1 {
+  font-size: 32px;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 20px;
+  background: #ff7aa2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4f87;
+  transform: scale(1.05);
+}
+
+/* Card style */
+.card {
+  background: white;
+  margin: 15px auto;
+  padding: 20px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <h1>Our Story 💖</h1>
+  <p>I made this for you… click something 💌</p>
+
+  <button onclick="showPage('memories')">🎨 Our Memories</button>
+  <button onclick="showPage('letters')">💌 Open When</button>
+  <button onclick="showPage('notes')">🫙 Little Things</button>
+  <button onclick="showPage('future')">🌌 Future Us</button>
+</div>
+
+<!-- MEMORIES -->
+<div id="memories" class="page">
+  <h1>Our Memories 🎨</h1>
+
+  <div class="card">
+    <p><b>The Day We Met</b></p>
+    <p>Add your drawing or description here ❤️</p>
+  </div>
+
+  <div class="card">
+    <p><b>Our Favorite Moment</b></p>
+    <p>Add another memory here 💖</p>
+  </div>
+
+  <button onclick="showPage('home')">Back</button>
+</div>
+
+<!-- LETTERS -->
+<div id="letters" class="page">
+  <h1>Open When 💌</h1>
+
+  <button onclick="showLetter('sad')">Open when you're sad</button>
+  <button onclick="showLetter('miss')">Open when you miss me</button>
+  <button onclick="showLetter('happy')">Open when you're happy</button>
+
+  <div class="card" id="letterBox"></div>
+
+  <button onclick="showPage('home')">Back</button>
+</div>
+
+<!-- NOTES -->
+<div id="notes" class="page">
+  <h1>Little Things 🫙</h1>
+
+  <button onclick="randomNote()">Pick a note 💖</button>
+  <div class="card" id="noteBox"></div>
+
+  <button onclick="showPage('home')">Back</button>
+</div>
+
+<!-- FUTURE -->
+<div id="future" class="page">
+  <h1>Future Us 🌌</h1>
+
+  <div class="card">
+    <p>I want to go on more adventures with you 🌍</p>
+  </div>
+
+  <div class="card">
+    <p>I want to keep making memories with you 💖</p>
+  </div>
+
+  <button onclick="showPage('home')">Back</button>
+</div>
+
+<script>
+function showPage(pageId) {
+  let pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+}
+
+function showLetter(type) {
+  let text = {
+    sad: "Hey… I know things feel heavy right now, but you’re not alone. I’m always here for you ❤️",
+    miss: "If you’re reading this, I probably miss you too. Always remember how much you mean to me 💖",
+    happy: "Seeing you happy makes me happy too. I love you more than you know 😊"
+  };
+  document.getElementById("letterBox").innerText = text[type];
+}
+
+function randomNote() {
+  let notes = [
+    "I love your smile 😊",
+    "You make everything better",
+    "I’m lucky to have you",
+    "You’re my favorite person 💖"
+  ];
+  document.getElementById("noteBox").innerText =
+    notes[Math.floor(Math.random() * notes.length)];
+}
+</script>
+
+</body>
+</html>
