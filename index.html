@@ -8,18 +8,22 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #ffd6e8, #ffeef5);
-  text-align: center;
-  color: #444;
 }
 
-/* PAGES */
+/* PAGES (FIXED SYSTEM) */
 .page {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   padding: 20px;
-  animation: fade 0.6s;
-  min-height: 100vh;
+  overflow-y: auto;
+  animation: fade 0.5s;
+  background: linear-gradient(to bottom right, #ffd6e8, #ffeef5);
 }
+
 .active {
   display: block;
 }
@@ -29,12 +33,13 @@ body {
   to {opacity: 1;}
 }
 
-/* HOME LAYOUT FIX */
+/* HOME LAYOUT */
 #home {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
 }
 
 /* MAIN BUTTONS */
@@ -47,12 +52,6 @@ body {
   background: #ff7aa2;
   color: white;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.main-btn:hover {
-  background: #ff4f87;
-  transform: scale(1.05);
 }
 
 /* SMALL BUTTON */
@@ -110,13 +109,10 @@ body {
   }
 }
 
-/* FULL SCREEN STAR BACKGROUND */
+/* STAR BACKGROUND */
 .star-bg {
-  background: black;
+  background: black !important;
   color: white;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
 }
 
 .star {
@@ -200,7 +196,7 @@ body {
   <button class="small-btn" onclick="showPage('home')">Back</button>
 </div>
 
-<!-- MEMORY 1 -->
+<!-- MEMORY PAGE -->
 <div id="memory1" class="page star-bg">
 
   <div class="envelope" style="display:block;">
@@ -243,21 +239,21 @@ function createHearts() {
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 4000);
+    setTimeout(() => heart.remove(), 4000);
   }
 }
 
-/* FULL SCREEN STARS */
+/* STARS */
 function createStars() {
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 60; i++) {
     let star = document.createElement("div");
     star.classList.add("star");
     star.style.top = Math.random() * 100 + "vh";
     star.style.left = Math.random() * 100 + "vw";
 
     document.body.appendChild(star);
+
+    setTimeout(() => star.remove(), 5000);
   }
 }
 </script>
