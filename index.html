@@ -16,8 +16,9 @@ body {
 /* PAGES */
 .page {
   display: none;
-  padding: 30px;
+  padding: 20px;
   animation: fade 0.6s;
+  min-height: 100vh;
 }
 .active {
   display: block;
@@ -28,15 +29,21 @@ body {
   to {opacity: 1;}
 }
 
+/* HOME LAYOUT FIX */
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 /* MAIN BUTTONS */
 .main-btn {
-  display: block;
-  width: 80%;
-  margin: 15px auto;
-  padding: 20px;
-  font-size: 18px;
+  width: 90%;
+  padding: 25px;
+  font-size: 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   background: #ff7aa2;
   color: white;
   cursor: pointer;
@@ -45,12 +52,12 @@ body {
 
 .main-btn:hover {
   background: #ff4f87;
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 /* SMALL BUTTON */
 .small-btn {
-  padding: 10px 18px;
+  padding: 12px 20px;
   border-radius: 20px;
   border: none;
   background: #ff7aa2;
@@ -86,11 +93,6 @@ body {
   background: #ff9ab5;
   color: white;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.memory-btn:hover {
-  transform: scale(1.05);
 }
 
 /* HEARTS */
@@ -108,10 +110,12 @@ body {
   }
 }
 
-/* STAR BACKGROUND */
+/* FULL SCREEN STAR BACKGROUND */
 .star-bg {
   background: black;
   color: white;
+  min-height: 100vh;
+  position: relative;
   overflow: hidden;
 }
 
@@ -132,7 +136,7 @@ body {
 
 <body>
 
-<!-- MAIN PAGE -->
+<!-- HOME -->
 <div id="home" class="page active">
   <h1>Our Story 💖</h1>
 
@@ -148,7 +152,7 @@ body {
   <button class="main-btn">Coming Soon</button>
 </div>
 
-<!-- ANNIVERSARY PAGE -->
+<!-- ANNIVERSARY -->
 <div id="anniv" class="page">
   <h2>Hey... 💌</h2>
 
@@ -158,9 +162,7 @@ body {
 
   <div class="envelope" id="letter">
     <h3>💌</h3>
-    <p>
-      Write your anniversary message here 💖
-    </p>
+    <p>Your anniversary message here 💖</p>
 
     <button class="small-btn" onclick="showPage('final')">
       one more thing… 💖
@@ -168,17 +170,15 @@ body {
   </div>
 </div>
 
-<!-- FINAL PAGE -->
+<!-- FINAL -->
 <div id="final" class="page">
   <div class="envelope" style="display:block;">
     <h3>💖</h3>
-    <p>
-      Your final message here 💖
-    </p>
+    <p>Your final message 💖</p>
   </div>
 </div>
 
-<!-- MEMORIES GRID -->
+<!-- MEMORIES -->
 <div id="memories" class="page">
   <h2>My Favorite Memories With You 💖</h2>
 
@@ -200,15 +200,12 @@ body {
   <button class="small-btn" onclick="showPage('home')">Back</button>
 </div>
 
-<!-- MEMORY 1 PAGE -->
+<!-- MEMORY 1 -->
 <div id="memory1" class="page star-bg">
 
   <div class="envelope" style="display:block;">
     <h3>🌙 The Night we confessed</h3>
-
-    <p>
-      Write your memory here 💖
-    </p>
+    <p>Your memory message here 💖</p>
   </div>
 
   <button class="small-btn" onclick="showPage('memories')">
@@ -228,7 +225,7 @@ function showPage(pageId) {
   }
 }
 
-/* ANNIVERSARY EFFECT */
+/* ANNIVERSARY */
 function revealMessage() {
   setTimeout(() => {
     document.getElementById("letter").style.display = "block";
@@ -236,7 +233,7 @@ function revealMessage() {
   }, 700);
 }
 
-/* HEART BURST */
+/* HEARTS */
 function createHearts() {
   for (let i = 0; i < 15; i++) {
     let heart = document.createElement("div");
@@ -252,9 +249,9 @@ function createHearts() {
   }
 }
 
-/* STAR GENERATOR */
+/* FULL SCREEN STARS */
 function createStars() {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 80; i++) {
     let star = document.createElement("div");
     star.classList.add("star");
     star.style.top = Math.random() * 100 + "vh";
