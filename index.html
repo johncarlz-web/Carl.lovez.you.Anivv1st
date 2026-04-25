@@ -2,28 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Our Story 💖</title>
+<title>💖🎉💞💋OUR FIRST ANNIVERSARY 😝🥰💋💞🎉</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ffd6e8, #ffeef5);
+  text-align: center;
+  color: #444;
 }
 
-/* PAGES (FIXED SYSTEM) */
+/* PAGES */
 .page {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  overflow-y: auto;
-  animation: fade 0.5s;
-  background: linear-gradient(to bottom right, #ffd6e8, #ffeef5);
+  padding: 30px;
+  animation: fade 0.6s;
 }
-
 .active {
   display: block;
 }
@@ -33,18 +28,19 @@ body {
   to {opacity: 1;}
 }
 
-/* HOME LAYOUT */
+/* HOME LAYOUT FIX */
 #home {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
+  justify-content: center;
 }
 
-/* MAIN BUTTONS */
+/* MAIN BUTTONS (FIXED SIZE) */
 .main-btn {
+  display: block;
   width: 90%;
+  margin: 15px auto;
   padding: 25px;
   font-size: 20px;
   border: none;
@@ -52,6 +48,12 @@ body {
   background: #ff7aa2;
   color: white;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.main-btn:hover {
+  background: #ff4f87;
+  transform: scale(1.03);
 }
 
 /* SMALL BUTTON */
@@ -65,7 +67,7 @@ body {
   margin-top: 20px;
 }
 
-/* ENVELOPE */
+/* ENVELOPE (CENTER FIX) */
 .envelope {
   background: white;
   padding: 20px;
@@ -75,6 +77,7 @@ body {
   margin: 20px auto;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   display: none;
+  text-align: center;
 }
 
 /* GRID */
@@ -86,12 +89,18 @@ body {
 }
 
 .memory-btn {
-  padding: 20px;
+  padding: 25px;
+  font-size: 16px;
   border: none;
   border-radius: 15px;
   background: #ff9ab5;
   color: white;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.memory-btn:hover {
+  transform: scale(1.05);
 }
 
 /* HEARTS */
@@ -109,10 +118,13 @@ body {
   }
 }
 
-/* STAR BACKGROUND */
+/* STAR BACKGROUND FIX */
 .star-bg {
-  background: black !important;
+  background: black;
   color: white;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .star {
@@ -132,9 +144,9 @@ body {
 
 <body>
 
-<!-- HOME -->
+<!-- MAIN PAGE -->
 <div id="home" class="page active">
-  <h1>Our Story 💖</h1>
+  <h1>💖🎉💞💋OUR FIRST ANNIVERSARY 😝🥰💋💞🎉</h1>
 
   <button class="main-btn" onclick="showPage('anniv')">
     1ST ANNIVERSARY OF PURE LOVE
@@ -148,7 +160,7 @@ body {
   <button class="main-btn">Coming Soon</button>
 </div>
 
-<!-- ANNIVERSARY -->
+<!-- ANNIVERSARY PAGE -->
 <div id="anniv" class="page">
   <h2>Hey... 💌</h2>
 
@@ -158,7 +170,9 @@ body {
 
   <div class="envelope" id="letter">
     <h3>💌</h3>
-    <p>Your anniversary message here 💖</p>
+    <p>
+      HIIII BABBYYYYYY CONGRATZ SA FIRST ANNIVERSARY NATINNN MY BABYYY THEAAA
+    </p>
 
     <button class="small-btn" onclick="showPage('final')">
       one more thing… 💖
@@ -166,15 +180,17 @@ body {
   </div>
 </div>
 
-<!-- FINAL -->
+<!-- FINAL PAGE -->
 <div id="final" class="page">
   <div class="envelope" style="display:block;">
     <h3>💖</h3>
-    <p>Your final message 💖</p>
+    <p>
+      LOVEYOUUU SO MUCH FOREVER AND EVERR
+    </p>
   </div>
 </div>
 
-<!-- MEMORIES -->
+<!-- MEMORIES GRID -->
 <div id="memories" class="page">
   <h2>My Favorite Memories With You 💖</h2>
 
@@ -196,12 +212,15 @@ body {
   <button class="small-btn" onclick="showPage('home')">Back</button>
 </div>
 
-<!-- MEMORY PAGE -->
+<!-- MEMORY 1 PAGE -->
 <div id="memory1" class="page star-bg">
 
   <div class="envelope" style="display:block;">
     <h3>🌙 The Night we confessed</h3>
-    <p>Your memory message here 💖</p>
+
+    <p>
+      Write your memory here 💖
+    </p>
   </div>
 
   <button class="small-btn" onclick="showPage('memories')">
@@ -221,7 +240,7 @@ function showPage(pageId) {
   }
 }
 
-/* ANNIVERSARY */
+/* ANNIVERSARY EFFECT */
 function revealMessage() {
   setTimeout(() => {
     document.getElementById("letter").style.display = "block";
@@ -229,7 +248,7 @@ function revealMessage() {
   }, 700);
 }
 
-/* HEARTS */
+/* HEART BURST */
 function createHearts() {
   for (let i = 0; i < 15; i++) {
     let heart = document.createElement("div");
@@ -239,21 +258,21 @@ function createHearts() {
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 4000);
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
   }
 }
 
-/* STARS */
+/* STAR GENERATOR */
 function createStars() {
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 50; i++) {
     let star = document.createElement("div");
     star.classList.add("star");
     star.style.top = Math.random() * 100 + "vh";
     star.style.left = Math.random() * 100 + "vw";
 
     document.body.appendChild(star);
-
-    setTimeout(() => star.remove(), 5000);
   }
 }
 </script>
